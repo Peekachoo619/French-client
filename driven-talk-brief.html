@@ -1,0 +1,156 @@
+<title>Driven Talk Work Order</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#EEF0F3; --surface:#FFFFFF; --sunk:#E3E6EB; --ink:#15181E; --ink-2:#4A505C; --line:#CDD2DA;
+  --sign:#F2B705; --sign-ink:#1A1400; --red:#C72C36; --amber:#B7791F; --green:#1F7A4D; --blue:#2B57E0;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#0F1216; --surface:#171B21; --sunk:#1F242C; --ink:#E9ECF1; --ink-2:#A2A9B6; --line:#2C323C;
+  --sign:#F5C22B; --red:#F0525B; --amber:#E0A43A; --green:#3FB27A; --blue:#5B82FF;}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#0F1216; --surface:#171B21; --sunk:#1F242C; --ink:#E9ECF1; --ink-2:#A2A9B6; --line:#2C323C;
+  --sign:#F5C22B; --red:#F0525B; --amber:#E0A43A; --green:#3FB27A; --blue:#5B82FF;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:36px 64px}
+.wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+h1,h2{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:1;margin:0;text-wrap:balance}
+h1{font-size:clamp(38px,7vw,64px)} h2{font-size:30px}
+h3{font-family:var(--display);font-weight:700;font-size:20px;margin:0;line-height:1.1}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+section{display:flex;flex-direction:column;gap:14px}
+.verdict{background:var(--sign);color:var(--sign-ink);border-radius:12px;padding:16px 18px;font-size:18px;font-weight:500}
+.verdict b{font-family:var(--display);font-size:22px;text-transform:uppercase;display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:640px){.grid2{grid-template-columns:1fr}}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.box p{font-size:15px;color:var(--ink-2)}
+.chg{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+.chg .k{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:5px;border:1px solid var(--line);background:var(--sunk);white-space:nowrap;margin-top:2px}
+/* seat flow */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;counter-reset:f}
+@media (max-width:700px){.flow{grid-template-columns:1fr 1fr}}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;font-size:14.5px}
+.step::before{counter-increment:f;content:counter(f);font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--blue)}
+.step b{font-size:15px}
+/* checklist */
+.todo{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.todo label{display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:start;padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer}
+.todo label:last-child{border-bottom:0}
+.todo input{width:18px;height:18px;margin-top:3px;accent-color:var(--green)}
+.todo input:checked + span{color:var(--ink-2);text-decoration:line-through}
+.todo .when{font-family:var(--mono);font-size:11px;color:var(--ink-2);white-space:nowrap;margin-top:4px}
+/* feasibility */
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:14.5px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:400}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;padding:2px 8px;border-radius:99px;color:#fff;white-space:nowrap}
+.g{background:var(--green)} .a{background:var(--amber)} .r{background:var(--red)}
+/* price */
+.phase{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.phase .amt{font-family:var(--display);font-weight:800;font-size:30px;font-variant-numeric:tabular-nums;text-align:right;line-height:1}
+.phase p{grid-column:1/-1;font-size:14.5px;color:var(--ink-2)}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:3px solid var(--ink);padding-top:10px}
+.total b{font-family:var(--display);font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.fine{font-size:13.5px;color:var(--ink-2)}
+</style>
+
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:12px">
+  <span class="eyebrow">For you only · Will / Driven Talk · revised scope, 26 Sept</span>
+  <h1>Driven Talk work order</h1>
+  <div class="verdict"><b>Can you do this with AI alone? Mostly yes.</b>About 90% is AI generation you already know. One piece isn't: putting the city text on Algo's hoodie is a simple edit job in CapCut. The one real risk is lip-sync on an impala's mouth, so test that before you send the offer.</div>
+</header>
+
+<section>
+  <span class="eyebrow">What changed from the first brief</span>
+  <div class="grid2">
+    <div class="box chg"><span class="k">ALGO</span><p>An impala. Black hoodie, dark sunglasses, <b>no chain or necklace</b>.</p></div>
+    <div class="box chg"><span class="k">PULL-DOWN</span><p>Now <b>one standalone 1–2 s clip</b>. Every talking clip starts with the glasses already down.</p></div>
+    <div class="box chg"><span class="k">CITIES</span><p>Sports lines for the <b>Big 3 only</b> (Cincinnati, Columbus, Cleveland). Scorpio and doughnuts work in all 8.</p></div>
+    <div class="box chg"><span class="k">HOODIE TEXT</span><p>513 hot orange, 614 scarlet red, 216 burnt orange. The other 5 cities get the city name in white. Same font, size and spot every time.</p></div>
+    <div class="box chg"><span class="k">AUGUST</span><p>Fixed black shirt that reads <b>"Made in Ohio"</b> in every clip.</p></div>
+    <div class="box chg"><span class="k">PHASES</span><p>P1 builds the kit (2–3 min of footage). P2 is the Big 3 markets. P3 is the 5 smaller cities, which he might do himself.</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">"Team seat" explained</span>
+  <h2>You work inside his account</h2>
+  <p class="fine">He pays for the plan on each tool and invites your email. You log in with your own login and switch to his workspace. Everything you make is saved in his account. No password sharing and nothing to transfer at the end.</p>
+  <div class="flow">
+    <div class="step"><b>He upgrades</b>to a plan with team members on Higgsfield, ElevenLabs and the music tool</div>
+    <div class="step"><b>He invites you</b>using the email on your own account for each tool</div>
+    <div class="step"><b>You switch workspace</b>to "Will / Driven Talk" before you generate anything</div>
+    <div class="step"><b>His credits, his files</b>so every clip, voice ID and seed stays with him</div>
+  </div>
+  <p class="fine">If a tool's plan has no team option, ask him to create the voice himself from your written settings. Don't take his password; that's against Fiverr's rules and puts you at risk.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Your steps, in order</span>
+  <h2>What you actually do</h2>
+  <div class="todo" id="todo">
+    <label><input type="checkbox" id="t1"><span><b>Run a 30-minute impala lip-sync test</b> in your own account. Generate one image of Algo and have him say "Because I'm a Scorpio." If the mouth looks right, you're safe to sell this.</span><span class="when">Before quoting</span></label>
+    <label><input type="checkbox" id="t2"><span><b>Send the quote</b> (message below). Ask which email to use for the seats. Ask who adds the hoodie text.</span><span class="when">Today</span></label>
+    <label><input type="checkbox" id="t3"><span><b>Send a Fiverr offer with milestones</b> for Phase 1 only. Phase 2 and 3 come as separate offers later.</span><span class="when">After he replies</span></label>
+    <label><input type="checkbox" id="t4"><span><b>Algo master sheet</b>: 4 angles and 10 expressions, blank black hoodie, no jewelry. Send it alone and <b>wait for approval</b>.</span><span class="when">Days 1–2</span></label>
+    <label><input type="checkbox" id="t5"><span><b>Supporting sheets</b> for August, Judge Gator, Robo Cop and April, plus the approved convertible scene.</span><span class="when">Days 3–4</span></label>
+    <label><input type="checkbox" id="t6"><span><b>Voices</b>: design Algo's and April's voices in his ElevenLabs. Write down the voice ID and every setting.</span><span class="when">Day 4</span></label>
+    <label><input type="checkbox" id="t7"><span><b>Clips</b>: flashing lights, Robo Cop question, pull-down (1–2 s), Scorpio and doughnut lines, Judge Gator, April's four clips, and August's 4 reactions.</span><span class="when">Days 5–10</span></label>
+    <label><input type="checkbox" id="t8"><span><b>Handoff</b>: end card, then every prompt, seed and setting in one doc, plus the tool, plan and date for each audio file.</span><span class="when">Days 11–12</span></label>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Can AI do each part?</span>
+  <h2>Task by task</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Task</th><th>AI alone?</th><th>What to watch</th></tr></thead>
+    <tbody>
+      <tr><td>Character sheets</td><td><span class="pill g">YES</span></td><td>Higgsfield character sheet. Check the horns and sunglasses in every view.</td></tr>
+      <tr><td>Same Algo across clips</td><td><span class="pill g">YES</span></td><td>Always start from the approved sheet as the reference. Redo any clip where the horns or hoodie drift.</td></tr>
+      <tr><td>Voices</td><td><span class="pill g">YES</span></td><td>Design the voices from scratch in ElevenLabs. Never clone a real person.</td></tr>
+      <tr><td>Impala lip-sync</td><td><span class="pill a">TEST FIRST</span></td><td>Animal mouths are the weak spot. Test before quoting, and be ready to try 2–3 models.</td></tr>
+      <tr><td>Pull-down → talking cut</td><td><span class="pill a">CAREFUL</span></td><td>The talking clip must start on the same frame the pull-down ends on. Use the last frame as the start image.</td></tr>
+      <tr><td>April singing</td><td><span class="pill g">YES</span></td><td>Human singing lip-sync works well. He supplies the jingle, or you make it for +$60.</td></tr>
+      <tr><td>Hoodie city text</td><td><span class="pill r">EDIT, NOT AI</span></td><td>AI garbles text on moving clothes. Generate the hoodie blank, then add the text in CapCut with motion tracking. Algo mostly sits still, so it's easy.</td></tr>
+      <tr><td>August "Made in Ohio" shirt</td><td><span class="pill a">EDIT OR AI</span></td><td>Short, fixed text. Try it in the prompt; if the letters warp, add it in CapCut like the hoodie text.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <span class="eyebrow">The quote</span>
+  <h2>What to charge</h2>
+  <div class="box" style="gap:0">
+    <div class="phase"><h3>Phase 1 · The kit</h3><span class="amt">$650</span><p>All sheets, 2 voices, the convertible scene, ~16 core clips, end card and source files. Three milestones: $150 / $400 / $100.</p></div>
+    <div class="phase"><h3>Phase 2 · Big 3 markets</h3><span class="amt">$250</span><p>12 fan-line clips (3 cities × 4 moods), plus 513 / 614 / 216 hoodie versions of the Algo clips.</p></div>
+    <div class="phase" style="border-bottom:0"><h3>Phase 3 · 5 smaller cities</h3><span class="amt">$150</span><p>Only city-name hoodie versions, no new AI clips. Optional, since he may do it himself.</p></div>
+    <div class="total"><span class="eyebrow">All three</span><b>$1,050</b></div>
+  </div>
+  <p class="fine">Why it's up from $520: the scope grew to 4–6 minutes of footage, with more April clips, a 10-expression sheet and hoodie text for 8 cities. His tools pay the credits, so almost all of this is your profit. At your normal rate card, 4–6 minutes would run $1,000–2,000 or more.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Not seen</span>
+  <p class="fine">Page 4 of his revised brief wasn't in the screenshots. Ask him for it or check it yourself before you send the offer; it may add clips.</p>
+</section>
+
+</div>
+
+<script>
+document.querySelectorAll('#todo input').forEach(cb=>{
+  try{ if(localStorage.getItem('dt-'+cb.id)==='1') cb.checked=true; }catch(e){}
+  cb.addEventListener('change',()=>{ try{ localStorage.setItem('dt-'+cb.id, cb.checked?'1':'0'); }catch(e){} });
+});
+</script>
