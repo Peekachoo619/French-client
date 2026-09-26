@@ -155,6 +155,49 @@ select:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-
 .qq::before{counter-increment:q;content:"Q" counter(q);font-family:var(--display);font-weight:800;font-size:24px;line-height:1;color:var(--red)}
 .qq p{font-size:15.5px}
 footer{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;color:var(--ink-2);font-size:13.5px}
+
+/* v2 additions */
+#assembler .timeline{min-width:860px}
+#assembler .beat .reuse{position:static;display:block;font-size:9px;margin-bottom:2px}
+#assembler .track{height:132px}
+.ver{display:inline-flex;gap:8px;align-items:center;font-family:var(--mono);font-size:12px;background:var(--ink);color:var(--bg);border-radius:99px;padding:3px 12px;width:max-content}
+.changes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:820px){.changes{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.changes{grid-template-columns:1fr}}
+.chg{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.chg .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-2)}
+.chg p{font-size:14.5px}
+.asm-body{display:grid;grid-template-columns:1fr 200px;gap:22px;align-items:start}
+@media (max-width:760px){.asm-body{grid-template-columns:1fr}}
+.hoodie{background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.hoodie svg{width:150px;height:auto}
+.hoodie .cap{font-family:var(--mono);font-size:11px;color:var(--ink-2);text-align:center}
+select option:disabled{color:var(--ink-2)}
+.rule{font-size:13.5px;color:var(--ink-2)}
+.rule b{color:var(--ink)}
+.phases{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:10px}
+@media (max-width:820px){.phases{grid-template-columns:1fr}}
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.phase.p1{border:2px solid var(--sign)}
+.phase ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px;font-size:14.5px}
+.phase .who{font-family:var(--mono);font-size:11px;color:var(--ink-2);letter-spacing:.06em}
+.mkts{display:flex;flex-wrap:wrap;gap:6px}
+.mk{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:6px;background:#15181E;color:#fff;display:inline-flex;gap:6px;align-items:center}
+.mk i{width:9px;height:9px;border-radius:2px;display:inline-block}
+/* storyboard */
+.sb-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.board{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+@media (max-width:960px){.board{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:520px){.board{grid-template-columns:repeat(2,1fr)}}
+.panel{display:flex;flex-direction:column;gap:8px}
+.frame{aspect-ratio:9/16;max-width:100%;background:var(--sunk);border:1.5px solid var(--ink);border-radius:6px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:10px}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame .shot{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.1;text-transform:uppercase;position:relative}
+.frame .safe{position:absolute;left:0;right:0;bottom:0;height:33%;border-top:1px dashed var(--ink-2);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-family:var(--mono);font-size:9px;color:var(--ink-2);letter-spacing:.08em}
+.frame .no{position:absolute;top:6px;left:8px;font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+.panel .act{font-size:13.5px;line-height:1.35}
+.panel .dl{font-size:13.5px;font-style:italic;color:var(--ink-2)}
+.panel .ids{display:flex;flex-wrap:wrap;gap:4px}
 </style>
 
 <div class="lightbar" aria-hidden="true"><span class="r"></span><span class="b"></span><span class="r"></span><span class="b"></span></div>
@@ -163,112 +206,185 @@ footer{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-wrap:
 
 <header class="hero">
   <div class="meta">
-    <span class="eyebrow">Driven Talk · Phase 1 build plan</span>
+    <span class="ver">v2 · revised scope</span>
+    <span class="eyebrow">Driven Talk · production plan</span>
     <span class="eyebrow">Prepared for Will</span>
-    <span class="eyebrow">Sept 2026</span>
   </div>
-  <h1>You're not ordering 24 assets. You're ordering <span class="hl">the kit that builds every episode.</span></h1>
-  <p class="lede">Beats 1, 3 and 4 are shot once and reused. Beat 2 is the only thing that changes. So Phase 1 has one job: lock Algo, the cops, Judge Gator and April so tightly that any excuse line dropped into beat 2 looks like it was filmed the same afternoon.</p>
+  <h1>One cast. One convertible. <span class="hl">Eight Ohio markets.</span></h1>
+  <p class="lede">Your revised brief turns the series into a library of short 2–5 second pieces you mix in the edit. This plan is rebuilt around it: Algo locked first, the pull-down as its own clip, sports lines only where they belong, and hoodie text that never moves between markets.</p>
   <div class="stats" role="list">
-    <div class="stat" role="listitem"><b>24</b><span>Phase 1 deliverables</span></div>
-    <div class="stat" role="listitem"><b>21</b><span>finished video clips</span></div>
-    <div class="stat" role="listitem"><b>2</b><span>locked voices in your account</span></div>
-    <div class="stat" role="listitem"><b>64</b><span>fan-line episodes the kit unlocks</span></div>
+    <div class="stat" role="listitem"><b>2–5 s</b><span>per reusable piece</span></div>
+    <div class="stat" role="listitem"><b>8</b><span>Ohio markets, one kit</span></div>
+    <div class="stat" role="listitem"><b>12</b><span>Big 3 fan lines, 3 cities × 4 moods</span></div>
+    <div class="stat" role="listitem"><b>4–6 min</b><span>unique footage across all phases</span></div>
   </div>
 </header>
+
+<section id="changes">
+  <div class="sec-head">
+    <span class="eyebrow">What v2 changes</span>
+    <h2>Your revisions, applied</h2>
+  </div>
+  <div class="changes">
+    <div class="chg"><span class="k">ALGO WARDROBE</span><p>Impala in a fixed black hoodie and dark sunglasses. No gold chain, no necklace, no neck jewelry.</p></div>
+    <div class="chg"><span class="k">PULL-DOWN</span><p>One standalone 1–2 s clip. Every response clip starts with the glasses already down.</p></div>
+    <div class="chg"><span class="k">MOODS</span><p>Carried by Algo's face, voice and posture after the glasses are down.</p></div>
+    <div class="chg"><span class="k">CITY RULE</span><p>Sports lines for Cincinnati, Columbus and Cleveland only. Scorpio and doughnuts in all 8.</p></div>
+    <div class="chg"><span class="k">CHEST TEXT</span><p>Area codes for the Big 3 in their colors, city names in white for the rest. Same font, size and placement.</p></div>
+    <div class="chg"><span class="k">AUGUST</span><p>One fixed black shirt reading "Made in Ohio" in every scene and every city.</p></div>
+  </div>
+</section>
 
 <section id="assembler">
   <div class="sec-head">
     <span class="eyebrow">Try it</span>
     <h2>Episode assembler</h2>
-    <p>Pick a city, a result and an excuse. The strip shows exactly which library pieces cut together into that episode, and which ones already exist after Phase 1.</p>
+    <p>Pick a market, a result and an excuse. The strip shows which library pieces cut together, and the hoodie shows the exact chest text for that market. Sports lines switch off automatically for the five smaller cities.</p>
   </div>
   <div class="assembler">
     <div class="controls">
-      <div class="ctl"><label for="city">City</label>
-        <select id="city"></select></div>
+      <div class="ctl"><label for="city">Market</label><select id="city"></select></div>
+      <div class="ctl"><label for="excuse">Excuse</label>
+        <select id="excuse">
+          <option value="fan">"Because I'm a [city] fan."</option>
+          <option value="scorpio">"Because I'm a Scorpio."</option>
+          <option value="donut">"Because I got the last doughnuts."</option>
+        </select></div>
       <div class="ctl"><label for="mood">Last game</label>
         <select id="mood">
           <option value="0">Big win</option><option value="1">Close win</option>
           <option value="2">Close loss</option><option value="3" selected>Big loss</option>
         </select></div>
-      <div class="ctl"><label for="excuse">Excuse</label>
-        <select id="excuse">
-          <option value="fan-fb">Fan line · football</option>
-          <option value="fan-bb">Fan line · basketball</option>
-          <option value="donut">"Because I got the last doughnuts"</option>
-          <option value="scorpio">"Because I'm a Scorpio"</option>
-        </select></div>
-      <div class="ctl"><label for="jingle">Jingle cut</label>
+      <div class="ctl"><label for="jingle">Closer</label>
         <select id="jingle">
-          <option value="7a">April jingle A</option><option value="7b">April jingle B</option>
-          <option value="7c">April jingle C</option><option value="22">Studio booth take</option>
+          <option value="j">April jingle + end card</option>
+          <option value="c">April catchphrase + end card</option>
+          <option value="s">Studio booth + end card</option>
         </select></div>
     </div>
-
-    <div class="line-card" aria-live="polite">
-      <span class="q" id="lineOut">"Because I'm a Toledo fan."</span>
-      <span class="tag" id="lineTag">Phase 2 · lip-sync on #8</span>
-    </div>
-
-    <div class="tl-scroll">
-      <div class="timeline">
-        <div class="ruler" id="ruler"></div>
-        <div class="track" id="track">
-          <div class="playhead" id="playhead"></div>
+    <div class="asm-body">
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div class="line-card" aria-live="polite">
+          <span class="q" id="lineOut"></span>
+          <span class="tag" id="lineTag"></span>
+        </div>
+        <p class="rule" id="ruleNote"></p>
+        <div class="tl-scroll">
+          <div class="timeline">
+            <div class="ruler" id="ruler"></div>
+            <div class="track" id="track"><div class="playhead" id="playhead"></div></div>
+          </div>
         </div>
       </div>
+      <div class="hoodie" aria-live="polite">
+        <svg viewBox="0 0 160 170" role="img" aria-label="Algo hoodie chest text preview">
+          <path d="M40 30 Q80 8 120 30 L150 60 L136 150 L24 150 L10 60 Z" fill="#111317" stroke="#3a3f48" stroke-width="2"/>
+          <path d="M58 26 Q80 50 102 26" fill="none" stroke="#3a3f48" stroke-width="3"/>
+          <text id="chestText" x="80" y="96" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="800" font-size="30" fill="#FF6A13">513</text>
+          <rect x="54" y="118" width="52" height="16" rx="3" fill="#1b1e24" stroke="#2c3038"/>
+        </svg>
+        <span class="cap" id="chestCap">513 · hot orange</span>
+      </div>
     </div>
-
     <div class="tl-foot">
       <div class="legend">
-        <span><span class="chip">#4</span> built in Phase 1</span>
-        <span><span class="chip p2">VO</span> made later from the kit</span>
+        <span><span class="chip">P1</span> built in Phase 1</span>
+        <span><span class="chip p2">P2</span> Big 3 fan line</span>
       </div>
       <div style="display:flex;gap:14px;align-items:center">
-        <span class="tc" id="tc">00:00 / 00:21</span>
+        <span class="tc" id="tc">00:00 / 00:20</span>
         <button class="btn" id="play" type="button">▶ Play the cut</button>
       </div>
     </div>
   </div>
 </section>
 
-<section id="assets">
+<section id="storyboard">
   <div class="sec-head">
-    <span class="eyebrow">Phase 1 · deliverables 1–24</span>
-    <h2>The asset map</h2>
-    <p>Grouped into three paid milestones. Nothing in Milestone 2 starts until you sign off on the Algo master sheet.</p>
+    <span class="eyebrow">Pilot storyboards</span>
+    <h2>Three pilot episodes, one cast</h2>
+    <p>Three first episodes built only from kit pieces, so you can pick the one to produce first. Every frame keeps the lower third clear for captions and the phone number.</p>
   </div>
-  <div class="filters" role="group" aria-label="Filter by milestone">
-    <button class="fbtn" type="button" data-f="all" aria-pressed="true">All 24</button>
-    <button class="fbtn" type="button" data-f="1" aria-pressed="false">M1 · Characters &amp; voices</button>
-    <button class="fbtn" type="button" data-f="2" aria-pressed="false">M2 · Clips</button>
-    <button class="fbtn" type="button" data-f="3" aria-pressed="false">M3 · Stills, end card, handoff</button>
+  <div class="sb-tabs" role="group" aria-label="Choose a storyboard">
+    <button class="fbtn" type="button" data-b="0" aria-pressed="true">A · Cincinnati, big loss</button>
+    <button class="fbtn" type="button" data-b="1" aria-pressed="false">B · Columbus, big win</button>
+    <button class="fbtn" type="button" data-b="2" aria-pressed="false">C · Toledo, doughnuts</button>
   </div>
-  <div class="gatebar"><div><b>Approval gate</b><p>Deliverable #1 goes to you first, alone. You approve Algo's proportions, colors, sunglasses and the smug pull-down face before a single clip is generated. Revisions on the sheet are free until it's right.</p></div></div>
-  <div class="assets" id="assetGrid"></div>
+  <div class="board" id="board"></div>
+</section>
+
+<section id="phases">
+  <div class="sec-head">
+    <span class="eyebrow">Scope</span>
+    <h2>Three phases</h2>
+    <p>The Algo master sheet is approved before any video generation begins. The Big 3 workflow is proven before anything scales.</p>
+  </div>
+  <div class="phases">
+    <div class="phase p1">
+      <span class="who">PHASE 1 · THE KIT · 2–3 MIN</span>
+      <h3>Everything reusable</h3>
+      <ul>
+        <li>Algo master reference (4 views, 6 expressions)</li>
+        <li>August, Judge Gator, Robo Cop, April references</li>
+        <li>Fixed black wardrobe, no neck jewelry on Algo</li>
+        <li>Algo voice and April voice</li>
+        <li>Approved convertible scene</li>
+        <li>Standalone sunglasses pull-down</li>
+        <li>Flashing lights and Robo Cop question</li>
+        <li>Scorpio and doughnut responses</li>
+        <li>Judge Gator verdict</li>
+        <li>April jingle, catchphrase, booth and control room</li>
+        <li>August reaction library (4)</li>
+        <li>End card template, source files, prompts, settings</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <span class="who">PHASE 2 · BIG 3 MARKETS</span>
+      <h3>Sports lines + area codes</h3>
+      <div class="mkts">
+        <span class="mk"><i style="background:#FF6A13"></i>513</span>
+        <span class="mk"><i style="background:#D21F2C"></i>614</span>
+        <span class="mk"><i style="background:#CC5500"></i>216</span>
+      </div>
+      <ul>
+        <li>12 fan-line clips, 3 cities × 4 moods</li>
+        <li>Chest text versions of Algo's clips</li>
+        <li>Workflow tested and approved before scaling</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <span class="who">PHASE 3 · 5 MORE MARKETS</span>
+      <h3>City names in white</h3>
+      <div class="mkts">
+        <span class="mk"><i style="background:#fff"></i>Akron</span><span class="mk"><i style="background:#fff"></i>Toledo</span><span class="mk"><i style="background:#fff"></i>Dayton</span><span class="mk"><i style="background:#fff"></i>Youngstown</span><span class="mk"><i style="background:#fff"></i>Mansfield</span>
+      </div>
+      <ul>
+        <li>Scorpio and doughnut excuses only, no sports</li>
+        <li>Optional: you can run this yourself with the delivered kit</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <section id="locks">
   <div class="sec-head">
     <span class="eyebrow">Consistency</span>
     <h2>What stays locked across every clip</h2>
-    <p>You asked for someone who has held one character steady across many clips. These are the rules each clip is checked against before it reaches you.</p>
   </div>
   <div class="locks">
-    <div class="lock"><h3>Identity</h3><p>Same face shape, eye spacing, coloring, sunglasses frame and hoodie fit in every angle. One master sheet per character is the reference for everything after it.</p></div>
-    <div class="lock"><h3>Voice</h3><p>Algo's and April's voice IDs are built inside your account and their settings are written down. A line you make next year sounds like a line made today.</p></div>
-    <div class="lock"><h3>Frame</h3><p>9:16, lower third kept clear for captions and the phone number, blank hoodie chests for your city text, and no real logos, team colors or brand names anywhere.</p></div>
+    <div class="lock"><h3>Identity</h3><p>Algo's face, horns, coat colors, proportions, sunglasses and hoodie match the approved sheet in every clip. Nothing around his neck, ever.</p></div>
+    <div class="lock"><h3>Chest text</h3><p>One font, one size, one position on the hoodie for all 8 markets. Only the approved wording and color change.</p></div>
+    <div class="lock"><h3>Frame</h3><p>9:16, lower third clear for captions and the number, no real logos, jerseys, team colors or brand names in frame.</p></div>
   </div>
   <div class="pulldown">
-    <span class="eyebrow">Algo's trademark move, timed the same in every response clip</span>
+    <span class="eyebrow">The standalone pull-down · one approved clip · 1–2 s · no dialogue</span>
     <div class="pd-track">
-      <div class="pd-step"><span class="tc">0.0 s</span>Hoof rises to the frames</div>
-      <div class="pd-step hot"><span class="tc">0.4 s</span>Glasses slide down the nose</div>
-      <div class="pd-step hot"><span class="tc">0.8 s</span>Eyes over the rims, smug hold</div>
-      <div class="pd-step"><span class="tc">1.2 s</span>Line starts</div>
+      <div class="pd-step"><span class="tc">start</span>Sunglasses on, convertible scene, approved camera</div>
+      <div class="pd-step hot"><span class="tc">middle</span>Slow lowering of the glasses</div>
+      <div class="pd-step hot"><span class="tc">end</span>Eyes visible over the lenses</div>
+      <div class="pd-step"><span class="tc">cut</span>Response clip picks up with glasses already down</div>
     </div>
-    <p class="fine">Viewers learn the rhythm and start laughing before the punchline. That only works if the beat never drifts, so every base clip shares it.</p>
+    <p class="fine">Built once, reused in every episode, so the move is identical everywhere and the mood lives in Algo's delivery.</p>
   </div>
 </section>
 
@@ -282,170 +398,143 @@ footer{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-wrap:
 
 <section id="schedule">
   <div class="sec-head">
-    <span class="eyebrow">Timeline</span>
+    <span class="eyebrow">Phase 1 timeline</span>
     <h2>12 working days, one gate</h2>
   </div>
   <div class="sched">
-    <div class="stage g"><span class="days">Days 1–2</span><h3>Algo master sheet</h3><p>Delivered alone for your approval. Clock pauses while you review.</p></div>
-    <div class="stage"><span class="days">Days 3–5</span><h3>Cast &amp; voices</h3><p>Judge Gator, Robo Cop and April sheets. Algo and April voice profiles in your account.</p></div>
-    <div class="stage"><span class="days">Days 6–10</span><h3>21 clips</h3><p>Stop, verdict, jingles, lights, base clips, excuses, tagline, studio and August reactions.</p></div>
-    <div class="stage"><span class="days">Days 11–12</span><h3>Stills &amp; handoff</h3><p>Three stills, end card template and the full source package.</p></div>
+    <div class="stage g"><span class="days">Days 1–2</span><h3>Algo master sheet</h3><p>Delivered alone for your approval before any video work.</p></div>
+    <div class="stage"><span class="days">Days 3–5</span><h3>Cast, scene &amp; voices</h3><p>Supporting references, the convertible scene, Algo and April voices in your workspace.</p></div>
+    <div class="stage"><span class="days">Days 6–10</span><h3>Core clips</h3><p>Lights, Robo Cop, pull-down, responses, verdict, April and August.</p></div>
+    <div class="stage"><span class="days">Days 11–12</span><h3>End card &amp; handoff</h3><p>Template plus every prompt, seed, setting and proof of rights.</p></div>
   </div>
+  <p class="fine">Progress updates go to you through each stage, starting with the Algo sheet.</p>
 </section>
 
 <section id="price">
   <div class="sec-head">
     <span class="eyebrow">Investment</span>
-    <h2>Phase 1, by milestone</h2>
+    <h2>Priced by phase</h2>
   </div>
   <div class="price">
     <div class="card">
-      <div class="ms"><h3>M1 · Characters &amp; voices</h3><span class="amt">$140</span><span class="what">Deliverables 1, 2, 3 plus April's speaking voice. Algo sheet approved first.</span></div>
-      <div class="ms"><h3>M2 · Clips</h3><span class="amt">$300</span><span class="what">Deliverables 4–12, 16, 17 and 20–24: the 21 clips, one revision round each.</span></div>
-      <div class="ms"><h3>M3 · Stills &amp; handoff</h3><span class="amt">$80</span><span class="what">Deliverables 13–15, 18, 19 and the full source package.</span></div>
-      <div class="total"><span class="eyebrow">Phase 1 total</span><b>$520</b></div>
-      <p class="fine">Generation happens inside tool accounts you own, as your brief requires, so plan and credit costs sit on your side and aren't in this price.</p>
+      <div class="ms"><h3>Phase 1 · The kit</h3><span class="amt">$650</span><span class="what">Milestones: $150 references &amp; voices · $400 core clips · $100 end card &amp; handoff.</span></div>
+      <div class="ms"><h3>Phase 2 · Big 3 markets</h3><span class="amt">$250</span><span class="what">12 fan-line clips plus 513 / 614 / 216 chest text versions.</span></div>
+      <div class="ms"><h3>Phase 3 · 5 more markets</h3><span class="amt">$150</span><span class="what">City-name versions in white. Optional.</span></div>
+      <div class="total"><span class="eyebrow">All three phases</span><b>$1,050</b></div>
+      <p class="fine">Generation runs in your workspace through a team seat, so plan and credit costs stay on your side.</p>
     </div>
     <div class="card">
-      <h3>Rates after Phase 1</h3>
+      <h3>Still open</h3>
       <div class="rates">
-        <div class="rate"><span>Fan-line response clip (new line lip-synced on an existing base clip)</span><b>$8</b></div>
-        <div class="rate"><span>All 64 fan-line clips as one batch</span><b>$450</b></div>
-        <div class="rate"><span>New excuse clip on an existing base clip</span><b>$20</b></div>
-        <div class="rate"><span>New base clip with a new prop</span><b>$45</b></div>
+        <div class="rate"><span>Which email should receive the team seat invites?</span><b>Seats</b></div>
+        <div class="rate"><span>Chest text: added by me, or in your edit?</span><b>Hoodie</b></div>
+        <div class="rate"><span>Jingle audio: supplied by you, or produced by me (+$60)?</span><b>Audio</b></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="questions">
-  <div class="sec-head">
-    <span class="eyebrow">Before I start</span>
-    <h2>Two things to confirm</h2>
-  </div>
-  <div class="qs">
-    <div class="qq"><p><b>April's jingle audio.</b> The deliverables table says you supply the jingle audio for #7 and #22. The voice section asks for full, vocal-only and instrumental stems made on a paid music plan. Are you sending finished songs, or should I produce the three jingles in your music account? Producing them adds $60.</p></div>
-    <div class="qq"><p><b>Account access.</b> Can you add me as a team member or seat on the video, voice and music tools? That keeps every file and voice ID in your account from the first generation, with nothing to transfer later.</p></div>
-  </div>
-</section>
-
 <footer>
-  <span>Driven Talk · Phase 1 build plan</span>
-  <span>Working examples of multi-clip character consistency are linked in my message.</span>
+  <span>Driven Talk · production plan v2</span>
+  <span>Built on your revised brief: character, city, wardrobe and scope rules.</span>
 </footer>
 
 </div>
 
 <script>
 (function(){
-  const CITIES=[["Cincinnati",4],["Columbus",4],["Cleveland",4],["Akron",5],["Toledo",5],["Dayton",5],["Youngstown",5],["Mansfield",5]];
-  const MOODS=["cheering","nervous smile","head shake","facepalm"];
-  const citySel=document.getElementById('city');
-  CITIES.forEach(([c],i)=>{const o=document.createElement('option');o.value=i;o.textContent=c;if(c==="Toledo")o.selected=true;citySel.appendChild(o);});
   const $=id=>document.getElementById(id);
-  const track=$('track'), ph=$('playhead');
-  let beats=[], total=0;
-
+  const CITIES=[
+    ["Cincinnati","513","#FF6A13","hot orange",true],["Columbus","614","#D21F2C","scarlet red",true],["Cleveland","216","#CC5500","burnt orange",true],
+    ["Akron","AKRON","#FFFFFF","white",false],["Toledo","TOLEDO","#FFFFFF","white",false],["Dayton","DAYTON","#FFFFFF","white",false],
+    ["Youngstown","YOUNGSTOWN","#FFFFFF","white",false],["Mansfield","MANSFIELD","#FFFFFF","white",false]];
+  const MOODS=[["cheering","full swagger, slow and proud"],["nervous smile","relieved"],["head shake","irritated, in denial"],["facepalm","flat, disappointed"]];
+  const citySel=$('city'), exSel=$('excuse'), track=$('track'), ph=$('playhead');
+  CITIES.forEach((c,i)=>{const o=document.createElement('option');o.value=i;o.textContent=c[0]+(c[4]?' · '+c[1]:'');citySel.appendChild(o);});
+  let beats=[],total=0;
+  const fmt=s=>'00:'+String(Math.floor(s)).padStart(2,'0');
   function build(){
-    const [city,badge]=CITIES[+citySel.value];
-    const mood=+$('mood').value, ex=$('excuse').value, jg=$('jingle').value;
-    let line, tag, exChips;
-    if(ex.startsWith('fan')){
-      const base=ex==='fan-fb'?8:9;
-      line=`"Because I'm a ${city} fan."`;
-      tag=`Phase 2 · lip-sync on #${base}`;
-      exChips=[[`#${base}`,0],['VO',1]];
-    }else if(ex==='donut'){line='"Because I got the last doughnuts."';tag='Phase 1 · clip #16';exChips=[['#16',0]];}
-    else{line='"Because I\'m a Scorpio."';tag='Phase 1 · clip #17';exChips=[['#17',0]];}
-    $('lineOut').textContent=line; $('lineTag').textContent=tag;
-    const jChip=jg==='22'?'#22':'#7'+jg.slice(1).toUpperCase();
+    const c=CITIES[+citySel.value], big=c[4];
+    exSel.options[0].disabled=!big;
+    if(!big&&exSel.value==='fan') exSel.value='scorpio';
+    const ex=exSel.value, mood=+$('mood').value, jg=$('jingle').value;
+    let line,tag,resp;
+    if(ex==='fan'){line=`"Because I'm a ${c[0]} fan."`;tag='Phase 2 · Big 3 fan line';resp=[['P2',1]];}
+    else if(ex==='scorpio'){line=`"Because I'm a Scorpio."`;tag='Phase 1 · all 8 markets';resp=[['P1',0]];}
+    else{line='"Because I got the last doughnuts."';tag='Phase 1 · all 8 markets';resp=[['P1',0]];}
+    $('lineOut').textContent=line;$('lineTag').textContent=tag;
+    $('ruleNote').innerHTML=big
+      ?`<b>${c[0]}</b> is a Big 3 market: sports, Scorpio and doughnut lines are all available. Delivery: ${ex==='fan'?MOODS[mood][1]:'deadpan confidence'}.`
+      :`<b>${c[0]}</b> is a smaller market: Scorpio and doughnut lines only. No sports references.`;
+    const t=$('chestText');t.textContent=c[1];t.setAttribute('fill',c[2]);
+    t.setAttribute('font-size',c[1].length>6?17:c[1].length>3?22:30);
+    $('chestCap').textContent=`${c[1]} · ${c[3]}`;
+    const closer={j:'April jingle',c:'April catchphrase',s:'Studio booth'}[jg];
     beats=[
-      {n:'Beat 1',t:'The stop',sub:badge===4?'CPD badge':'POLICE badge',ids:[['#20',0],['#'+badge,0]],dur:5,reuse:'Reused'},
-      {n:'Beat 2',t:'The excuse',sub:'August: '+MOODS[mood],ids:exChips.concat([['#24',0]]),dur:6,reuse:'Varies',vary:true},
-      {n:'Beat 3',t:'The verdict',sub:'"Guilty, guilty, guilty."',ids:[['#6',0]],dur:3,reuse:'Reused'},
-      {n:'Beat 4',t:'The jingle',sub:'End card + number',ids:[[jChip,0],['#18',0]],dur:7,reuse:'Reused'}
-    ];
+      {n:'Stop',t:'Flashing lights',sub:'Unmarked car',ids:[['P1',0]],dur:2.5,reuse:'Reused'},
+      {n:'Stop',t:'Robo Cop',sub:'"You know why I pulled you over?"',ids:[['P1',0]],dur:3,reuse:'Reused'},
+      {n:'Signature',t:'Pull-down',sub:'1–2 s, no dialogue',ids:[['P1',0]],dur:1.5,reuse:'Reused'},
+      {n:'Excuse',t:'Algo response',sub:'Chest: '+c[1],ids:resp,dur:3,reuse:'Varies',vary:true},
+      {n:'Reaction',t:'August',sub:MOODS[mood][0],ids:[['P1',0]],dur:2,reuse:'Varies',vary:true},
+      {n:'Verdict',t:'Judge Gator',sub:'"Guilty, guilty, guilty."',ids:[['P1',0]],dur:3,reuse:'Reused'},
+      {n:'Close',t:closer,sub:'+ end card',ids:[['P1',0]],dur:5,reuse:'Reused'}];
     total=beats.reduce((a,b)=>a+b.dur,0);
     track.querySelectorAll('.beat').forEach(e=>e.remove());
-    beats.forEach((b,i)=>{
-      const d=document.createElement('div');
-      d.className='beat'+(b.vary?' vary':'');d.style.flex=b.dur;
-      d.innerHTML=`<span class="reuse">${b.reuse}</span><div><div class="bn">${b.n} · ${b.dur}s</div><div class="bt">${b.t}</div><div class="bn">${b.sub}</div></div><div class="ids">${b.ids.map(([t,p])=>`<span class="chip${p?' p2':''}">${t}</span>`).join('')}</div>`;
-      track.insertBefore(d,ph);
-    });
-    const r=$('ruler');r.innerHTML='';
-    for(let s=0;s<=total;s+=Math.ceil(total/6)){const sp=document.createElement('span');sp.textContent=fmt(s);r.appendChild(sp);}
+    beats.forEach(b=>{const d=document.createElement('div');d.className='beat'+(b.vary?' vary':'');d.style.flex=b.dur;
+      d.innerHTML=`<span class="reuse">${b.reuse}</span><div><div class="bn">${b.n} · ${b.dur}s</div><div class="bt">${b.t}</div><div class="bn">${b.sub}</div></div><div class="ids">${b.ids.map(([x,p])=>`<span class="chip${p?' p2':''}">${x}</span>`).join('')}</div>`;
+      track.insertBefore(d,ph);});
+    const r=$('ruler');r.innerHTML='';for(let s=0;s<=total;s+=4){const sp=document.createElement('span');sp.textContent=fmt(s);r.appendChild(sp);}
     stop();
   }
-  const fmt=s=>'00:'+String(Math.floor(s)).padStart(2,'0');
   let raf=null,t0=0;
   function stop(){cancelAnimationFrame(raf);raf=null;ph.style.opacity=0;$('play').textContent='▶ Play the cut';$('tc').textContent=`00:00 / ${fmt(total)}`;track.querySelectorAll('.beat').forEach(e=>e.classList.remove('on'));}
-  function tick(now){
-    const speed=4; // 4x so the whole cut previews in ~5 s
-    const s=Math.min(total,(now-t0)/1000*speed);
-    ph.style.opacity=1;ph.style.left=(s/total*100)+'%';
-    $('tc').textContent=`${fmt(s)} / ${fmt(total)}`;
-    let acc=0;const els=track.querySelectorAll('.beat');
-    beats.forEach((b,i)=>{els[i].classList.toggle('on',s>=acc&&s<acc+b.dur);acc+=b.dur;});
-    if(s<total)raf=requestAnimationFrame(tick);else{els[els.length-1].classList.add('on');$('play').textContent='↺ Replay';raf=null;}
-  }
-  $('play').addEventListener('click',()=>{
-    if(raf){stop();return;}
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-      const els=track.querySelectorAll('.beat');let i=0;stop();
-      const step=()=>{els.forEach(e=>e.classList.remove('on'));if(i<els.length){els[i++].classList.add('on');setTimeout(step,1200);}};step();return;
-    }
-    t0=performance.now();$('play').textContent='■ Stop';raf=requestAnimationFrame(tick);
-  });
+  function tick(now){const s=Math.min(total,(now-t0)/1000*4);ph.style.opacity=1;ph.style.left=(s/total*100)+'%';$('tc').textContent=`${fmt(s)} / ${fmt(total)}`;
+    let acc=0;const els=track.querySelectorAll('.beat');beats.forEach((b,i)=>{els[i].classList.toggle('on',s>=acc&&s<acc+b.dur);acc+=b.dur;});
+    if(s<total)raf=requestAnimationFrame(tick);else{els[els.length-1].classList.add('on');$('play').textContent='↺ Replay';raf=null;}}
+  $('play').addEventListener('click',()=>{if(raf){stop();return;}
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){const els=track.querySelectorAll('.beat');let i=0;stop();const step=()=>{els.forEach(e=>e.classList.remove('on'));if(i<els.length){els[i++].classList.add('on');setTimeout(step,900);}};step();return;}
+    t0=performance.now();$('play').textContent='■ Stop';raf=requestAnimationFrame(tick);});
   ['city','mood','excuse','jingle'].forEach(id=>$(id).addEventListener('change',build));
   build();
 
-  const A=[
-    [1,'Algo master reference sheet','Front, side, back, three-quarter, 6 expressions incl. the pull-down face',1,true],
-    [2,'Judge Gator, Robo Cop, April sheets','Same format as Algo · 3 sheets',1],
-    [3,'Algo voice profile','Voice ID and every setting, written down, in your account',1],
-    [4,'Robo Cop stop · CPD','Cincinnati, Columbus, Cleveland',2],
-    [5,'Robo Cop stop · POLICE','Akron, Toledo, Dayton, Youngstown, Mansfield',2],
-    [6,'Judge Gator verdict','"Guilty, guilty, guilty" + gavel',2],
-    [7,'April jingle clips','3 clips, lip-synced to the jingles',2],
-    [8,'Algo base · football','August silent in the passenger seat, pull-down beat',2],
-    [9,'Algo base · basketball','Spun on the hoof',2],
-    [10,'Algo base · doughnuts','Box of doughnuts',2],
-    [11,'Algo base · hands free','For general excuse lines',2],
-    [12,'Algo tagline','Ball, pull-down, wink, "Here every season"',2],
-    [13,'Still · Algo and Will','Algo in the 513 hoodie, from your photos',3],
-    [14,'Still · Will, Algo, April','Group shot',3],
-    [15,'Still · Algo and August','Establishing shot',3],
-    [16,'Excuse · last doughnuts','Built on #10',2],
-    [17,'Excuse · Scorpio','Built on #11',2],
-    [18,'End card template','Space for number and tagline',3],
-    [19,'Project files and prompts','Every prompt, seed and setting',3],
-    [20,'Flashing lights opener','Unmarked car, works in every city',2],
-    [21,'April catchphrase','"The SR-22 Hotline is here for you"',2],
-    [22,'Studio · April in the booth','Headphones, mic, lip-synced',2],
-    [23,'Studio · control room','Algo and August at the board, April behind glass',2],
-    [24,'August reactions','4 close-ups: cheer, nervous smile, head shake, facepalm',2]
-  ];
-  const grid=$('assetGrid');
-  grid.innerHTML=A.map(([n,t,d,m,g])=>`<div class="asset${g?' gate':''}" data-m="${m}"><span class="n">${n}</span><span class="t">${t}</span><span class="d">${d}</span><span class="m">M${m}${g?' · APPROVAL GATE':''}</span></div>`).join('');
-  document.querySelectorAll('.fbtn').forEach(b=>b.addEventListener('click',()=>{
-    document.querySelectorAll('.fbtn').forEach(x=>x.setAttribute('aria-pressed',x===b));
-    const f=b.dataset.f;
-    grid.querySelectorAll('.asset').forEach(a=>a.classList.toggle('dim',f!=='all'&&a.dataset.m!==f));
-  }));
+  // Storyboards. Add an image path as the 4th field once frames are rendered.
+  const BOARDS=[
+    [["Wide","Unmarked car, lights flashing, pulls up behind the red convertible on a leafy Ohio street.","",""],
+     ["Medium","Robo Cop leans toward the driver-side window.","\"You know why I pulled you over?\"",""],
+     ["Close-up","Algo slowly lowers his sunglasses. Eyes over the lenses. 513 in hot orange on his hoodie.","",""],
+     ["Two-shot","Algo, flat and disappointed. August beside him in his Made in Ohio shirt.","\"Because I'm a Cincinnati fan.\"",""],
+     ["Close-up","August facepalms in the passenger seat.","",""],
+     ["Medium","Judge Gator bangs the gavel.","\"Guilty, guilty, guilty.\"",""]],
+    [["Wide","Lights flash behind the convertible, late afternoon sun.","",""],
+     ["Medium","Robo Cop at the driver-side window.","\"You know why I pulled you over?\"",""],
+     ["Close-up","Pull-down. 614 in scarlet red on the hoodie, basketball spinning on Algo's hoof.","",""],
+     ["Two-shot","Full swagger, slow and proud.","\"Because I'm a Columbus fan.\"",""],
+     ["Close-up","August cheers, both fists up.","",""],
+     ["Medium","April in the vocal booth, headphones on, singing the jingle.","\"The SR-22 Hotline is here for you.\"",""]],
+    [["Wide","Lights flash behind the convertible on a quiet Toledo street.","",""],
+     ["Medium","Robo Cop at the driver-side window.","\"You know why I pulled you over?\"",""],
+     ["Close-up","Pull-down. TOLEDO in white on the hoodie, open box of doughnuts on his lap.","",""],
+     ["Two-shot","Deadpan, zero regret.","\"Because I got the last doughnuts.\"",""],
+     ["Medium","Judge Gator bangs the gavel.","\"Guilty, guilty, guilty.\"",""],
+     ["Medium","April to camera, warm smile.","\"The SR-22 Hotline is here for you.\"",""]]];
+  function board(i){
+    $('board').innerHTML=BOARDS[i].map((p,n)=>`<div class="panel"><div class="frame">${p[3]?`<img src="${p[3]}" alt="Storyboard frame ${n+1}">`:''}<span class="no">${String(n+1).padStart(2,'0')}</span>${p[3]?'':`<span class="shot">${p[0]}</span>`}<span class="safe">CAPTIONS · NUMBER</span></div><span class="act">${p[1]}</span>${p[2]?`<span class="dl">${p[2]}</span>`:''}</div>`).join('');
+  }
+  document.querySelectorAll('.sb-tabs .fbtn').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.sb-tabs .fbtn').forEach(x=>x.setAttribute('aria-pressed',x===b));board(+b.dataset.b);}));
+  board(0);
 
   const T=[
     ['Full commercial rights','You own every character, design, clip, still and voice outright, for paid ads and all other uses, with no expiration.'],
-    ['Work in your account','All generation happens in accounts you own, or every asset is moved in before final payment.'],
-    ['Voice ownership','Algo\'s voice profile lives in your account so you can make new lines without me.'],
+    ['Work in your account','Everything is generated in your workspace through a team seat. Nothing stays in mine.'],
+    ['Voice ownership','Algo\'s and April\'s voice profiles live in your account so you can make new lines without me.'],
     ['Full source delivery','Master references, raw clips, audio, prompts, seeds and settings, not only finished videos.'],
     ['Paid plans only','Voice and music made on commercial plans. No free-tier output.'],
     ['Original voices only','No cloned or imitated real voices, for Algo or for April.'],
     ['Proof of rights','Tool, plan and generation date listed for every audio asset.'],
     ['No accounts on your behalf','I won\'t create any page or profile using your brand names.'],
     ['No portfolio use without permission','I ask before showing any of this work publicly.'],
-    ['No third-party branding','No real team logos, jerseys, team colors or brand names in frame.']
-  ];
+    ['No third-party branding','No real team logos, jerseys, team colors or brand names in frame.']];
   const ck='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   $('termList').innerHTML=T.map(([b,s])=>`<div class="term"><span class="tick">${ck}</span><div><b>${b}</b><span>${s}</span></div></div>`).join('');
 })();
